@@ -73,6 +73,8 @@
   `(eval-when (:compile-toplevel :load-toplevel :execute)
      (cffi:defcstruct ,name
        ,@fields)
+     ;;typedef it
+     (cffi:defctype ,name (:struct ,name))
 
      ;;Export name
      (export ',name)
@@ -88,6 +90,8 @@
   `(eval-when (:compile-toplevel :load-toplevel :execute)
      (cffi:defcunion ,name
        ,@fields)
+     ;;typedef it
+     (cffi:defctype ,name (:union ,name))
 
      ;;Export name
      (export ',name)
